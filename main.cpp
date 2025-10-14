@@ -27,17 +27,12 @@ int binarySearch(const vector<int>& numbers,int number) {
 }
 
 int main() {
-    Stack s1;
-    stack<int> s2;
+    Stack s;
+    string temp = "abc";
 
-    s2.push(1);
-    s2.push(2);
-    s2.push(3);
-    s2.push(1);
-    s2.push(5);
-    s2.push(6);
+    s.reverse(temp);
 
-    s1.removeByKey(1,s2);
+    cout << temp << endl;
 
 
     return 0;

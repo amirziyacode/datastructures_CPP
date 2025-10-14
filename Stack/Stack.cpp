@@ -104,3 +104,16 @@ void Stack::removeByKey(const int key, stack<int> & _stack) {
         temp.pop();
     }
 }
+
+// exp = "abc" look for exp = "cba"
+void Stack::reverse(string & exp) {
+    stack<char> s;
+    for (char ch : exp) {
+        s.push(ch);
+    }
+    exp = "";
+    while (!s.empty()) {
+        exp += s.top();
+        s.pop();
+    }
+}

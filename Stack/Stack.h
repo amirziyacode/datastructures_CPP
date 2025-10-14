@@ -21,6 +21,7 @@ class Stack {
     bool isPostFix(const string &) const;
     bool isBalanced(const string&)const;
     void removeByKey(int,stack<int>&);
+    void reverse(string&);
 };
 
 
