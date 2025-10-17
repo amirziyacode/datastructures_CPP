@@ -28,11 +28,11 @@ int binarySearch(const vector<int>& numbers,int number) {
 
 int main() {
     Stack s;
-    string temp = "abc";
+    string temp = "level";
 
-    s.reverse(temp);
-
-    cout << temp << endl;
+   if ( s.isPalindrome(temp)) {
+       cout << "true" << endl;
+   };
 
 
     return 0;

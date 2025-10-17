@@ -4,6 +4,7 @@
 
 #include "Stack.h"
 #include <cctype>
+#include <math.h>
 #include <vector>
 
 #include "stack"
@@ -41,7 +42,7 @@ int Stack::pop() {
 }
 
 // for Example  32 + 67 -*  is real world is like 3+2 - 6*7 but computer not understood how can to solve it
-bool Stack::isPostFix(const string &exp) const {
+bool Stack::isPostFix(const string &exp) {
     stack<string> s;
 
     for (int i=0;i<exp.length();i++) {
@@ -63,7 +64,7 @@ bool Stack::isPostFix(const string &exp) const {
 
 }
 
-bool Stack::isBalanced(const string& exp) const {
+bool Stack::isBalanced(const string& exp) {
     stack<char> s;
     for (char ch : exp) {
         if (ch == '(' || ch == '{' || ch == '[') {
@@ -116,4 +117,24 @@ void Stack::reverse(string & exp) {
         exp += s.top();
         s.pop();
     }
+}
+
+bool Stack::isPalindrome(string & exp) {
+    stack<char> s;
+        const int n = exp.length();
+    for (int i =0; i< n/2; i++) {
+        s.push(exp[i]);
+    }
+
+    // length of string exp is odd or even
+    const int start = n%2 == 0 ? n/2 : (n/2+1);
+
+    for (int i = start; i < n; i++) {
+        if (s.empty() || s.top() != exp[i]) {
+            return false;
+        }
+        s.pop();
+    }
+
+    return s.empty();
 }

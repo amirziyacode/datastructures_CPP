@@ -18,10 +18,15 @@ class Stack {
     int peek() const;
     int pop();
     void push(int);
-    bool isPostFix(const string &) const;
-    bool isBalanced(const string&)const;
+
+    static bool isPostFix(const string &);
+
+    static bool isBalanced(const string&);
     void removeByKey(int,stack<int>&);
-    void reverse(string&);
+
+    static void reverse(string&);
+
+    static bool isPalindrome(string&);
 };
 
 
