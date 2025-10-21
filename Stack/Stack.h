@@ -19,6 +19,7 @@ class Stack {
     int pop();
     void push(int);
 
+
     static bool isPostFix(const string &);
 
     static bool isBalanced(const string&);
@@ -27,6 +28,9 @@ class Stack {
     static void reverse(string&);
 
     static bool isPalindrome(string&);
+
+    static void removeDublication(string&);
+
 };
 
 

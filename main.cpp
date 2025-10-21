@@ -1,9 +1,9 @@
+
 #include <iostream>
+#include <ostream>
 #include <vector>
-#include  "Stack/Stack.h"
-#include "LinkedList/CycleLinkedList.h"
-#include "DoublyLinkedList.h"
-#include "LinkedList/LinkedList.h"
+#include <stack>
+#include "Stack/Stack.h"
 
 using namespace std;
 
@@ -26,13 +26,60 @@ int binarySearch(const vector<int>& numbers,int number) {
     return -1;
 }
 
-int main() {
-    Stack s;
-    string temp = "level";
+void sortStack(stack<int>& _stack) {
+    stack<int> tempStack;
+    int temp = 0;
 
-   if ( s.isPalindrome(temp)) {
-       cout << "true" << endl;
-   };
+    while (!_stack.empty()) {
+        temp = _stack.top();
+        _stack.pop();
+        while (!tempStack.empty() && tempStack.top() > temp) {
+            _stack.push(tempStack.top());
+            tempStack.pop();
+        }
+        tempStack.push(temp);
+    }
+
+    while (!tempStack.empty()) {
+        _stack.push(tempStack.top());
+        tempStack.pop();
+    }
+}
+
+void addToBottomStack(stack<int>& _stack,int x) {
+    if (_stack.empty()) {
+        _stack.push(x);
+        return;
+    }
+    int top = _stack.top();
+    _stack.pop();
+
+    addToBottomStack(_stack,x);
+
+    _stack.push(top);
+}
+
+void reversStack(stack<int>& _stack) {
+    if (_stack.empty()) {
+        return;
+    }
+    int temp = _stack.top();
+    _stack.pop();
+
+    reversStack(_stack);
+
+    addToBottomStack(_stack,temp);
+}
+int main() {
+    stack<int> stack;
+
+    stack.push(3);
+    stack.push(2);
+    stack.push(1);
+
+
+
+    reversStack(stack);
 
 
     return 0;

@@ -138,3 +138,23 @@ bool Stack::isPalindrome(string & exp) {
 
     return s.empty();
 }
+
+void Stack::removeDublication(string & exp) {
+    stack<char> s;
+    s.push(exp[0]);
+    for (int i = 1; i < exp.length(); i++) {
+        if (exp[i] != s.top()) {
+            s.push(exp[i]);
+        }
+    }
+
+    exp = "";
+    while (!s.empty()) {
+        exp += s.top();
+        s.pop();
+    }
+
+    reverse(exp);
+}
+
+
