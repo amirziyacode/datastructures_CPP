@@ -1,9 +1,6 @@
 
-#include <iostream>
-#include <ostream>
 #include <vector>
 #include <stack>
-#include "Stack/Stack.h"
 
 using namespace std;
 
@@ -70,16 +67,41 @@ void reversStack(stack<int>& _stack) {
 
     addToBottomStack(_stack,temp);
 }
+
+void insertInSortedOrder(stack<int>& _stack,int x) {
+    if (_stack.empty() || _stack.top() <= x) {
+        _stack.push(x);
+        return;
+    }
+    int top = _stack.top();
+    _stack.pop();
+
+    insertInSortedOrder(_stack,x);
+
+    _stack.push(top);
+}
+
+void sortStackRecursive(stack<int>& _stack) {
+    if (_stack.empty()) {
+        return;
+    }
+
+    int top = _stack.top();
+    _stack.pop();
+
+    sortStackRecursive(_stack);
+
+    insertInSortedOrder(_stack,top);
+}
 int main() {
     stack<int> stack;
 
     stack.push(3);
-    stack.push(2);
     stack.push(1);
+    stack.push(2);
 
+    sortStackRecursive(stack);
 
-
-    reversStack(stack);
 
 
     return 0;
