@@ -14,4 +14,6 @@ add_executable(untitled main.cpp
         DoublyLinkedList.h
         Stack/Stack.cpp
         Stack/Stack.h
+        Stack/StackArray.cpp
+        Stack/StackArray.h
 )

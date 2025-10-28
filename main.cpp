@@ -1,6 +1,10 @@
 
+#include <iostream>
+#include <ostream>
 #include <vector>
 #include <stack>
+
+#include "Stack/StackArray.h"
 
 using namespace std;
 
@@ -94,14 +98,11 @@ void sortStackRecursive(stack<int>& _stack) {
     insertInSortedOrder(_stack,top);
 }
 int main() {
-    stack<int> stack;
+    StackArray s1;
 
-    stack.push(3);
-    stack.push(1);
-    stack.push(2);
-
-    sortStackRecursive(stack);
-
+    for (int i = 0; i < 51; i++) {
+        s1.push(i);
+    }
 
 
     return 0;
