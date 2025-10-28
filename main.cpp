@@ -1,10 +1,10 @@
 
+
 #include <iostream>
 #include <ostream>
+#include <queue>
 #include <vector>
 #include <stack>
-
-#include "Stack/StackArray.h"
 
 using namespace std;
 
@@ -97,14 +97,20 @@ void sortStackRecursive(stack<int>& _stack) {
 
     insertInSortedOrder(_stack,top);
 }
-int main() {
-    StackArray s1;
 
-    for (int i = 0; i < 51; i++) {
-        s1.push(i);
+void reversQueueRecursive(queue<int>& _queue) {
+    if (_queue.empty()) {
+        return;
     }
 
+    const int top = _queue.front();
+    _queue.pop();
 
+    reversQueueRecursive(_queue);
+
+    _queue.push(top);
+}
+int main() {
     return 0;
 
 }

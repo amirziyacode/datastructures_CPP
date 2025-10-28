@@ -4,7 +4,7 @@
 
 #ifndef UNTITLED_QUEUE_H
 #define UNTITLED_QUEUE_H
-#include "Node.h"
+#include "../LinkedList/Node.h"
 
 
 class Queue {

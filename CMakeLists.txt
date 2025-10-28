@@ -18,6 +18,6 @@ add_executable(untitled main.cpp
         Stack/StackArray.h
         Queue/Queue.cpp
         Queue/Queue.h
-        Queue/Node.cpp
-        Queue/Node.h
+        Queue/QueueStack.cpp
+        Queue/QueueStack.h
 )
