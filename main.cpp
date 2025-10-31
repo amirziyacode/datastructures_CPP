@@ -6,6 +6,8 @@
 #include <vector>
 #include <stack>
 
+#include "Stack/StackQueue.h"
+
 using namespace std;
 
 int binarySearch(const vector<int>& numbers,int number) {
@@ -111,6 +113,14 @@ void reversQueueRecursive(queue<int>& _queue) {
     _queue.push(top);
 }
 int main() {
+    StackQueue sq;
+    sq.push(10);
+    sq.push(20);
+    sq.push(30);
+
+    sq.pop();
+
+    cout << sq.peek() << endl;
     return 0;
 
 }

@@ -20,4 +20,6 @@ add_executable(untitled main.cpp
         Queue/Queue.h
         Queue/QueueStack.cpp
         Queue/QueueStack.h
+        Stack/StackQueue.cpp
+        Stack/StackQueue.h
 )
