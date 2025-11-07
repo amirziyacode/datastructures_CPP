@@ -6,10 +6,13 @@
 #include <vector>
 #include <stack>
 
+#include "BST/BST.h"
+#include "BST/NodeTree.h"
 #include "Stack/StackQueue.h"
 
 using namespace std;
 
+// algorithme
 int binarySearch(const vector<int>& numbers,int number) {
 
     int low = 0;
@@ -112,15 +115,30 @@ void reversQueueRecursive(queue<int>& _queue) {
 
     _queue.push(top);
 }
+
+void traverseInOrder(NodeTree* root) {
+    if (root == nullptr) {
+        return;
+    }
+    traverseInOrder(root->left);
+    cout << root->data << " ";
+    traverseInOrder(root->right);
+}
 int main() {
-    StackQueue sq;
-    sq.push(10);
-    sq.push(20);
-    sq.push(30);
+    BST bst;
+    bst.insert(7);
+    bst.insert(9);
+    bst.insert(4);
+    bst.insert(3);
+    bst.insert(5);
+    bst.insert(2);
 
-    sq.pop();
+    if (bst.search(-1)) {
+        cout << "YES";
+    }else {
+        cout << "NO";
+    }
 
-    cout << sq.peek() << endl;
     return 0;
 
 }

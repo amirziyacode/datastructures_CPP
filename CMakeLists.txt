@@ -22,4 +22,8 @@ add_executable(untitled main.cpp
         Queue/QueueStack.h
         Stack/StackQueue.cpp
         Stack/StackQueue.h
+        BST/NodeTree.cpp
+        BST/NodeTree.h
+        BST/BST.cpp
+        BST/BST.h
 )
