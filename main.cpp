@@ -1,5 +1,6 @@
 
 
+#include <algorithm>
 #include <cstring>
 #include <iostream>
 #include <ostream>
@@ -148,14 +149,55 @@ int findClosingIndex(char *str, int opening_index)
     return -1;
 }
 
+string reversePrefix(string word, char ch) {
+    int id = -1;
+
+
+    for (int i = 0; i < word.size(); i++) {
+        if (word[i] == ch) {
+            id = i;
+            break;
+        }
+    }
+
+    if (id == -1) return word;
+
+    reverse(word.begin(), word.begin() + id + 1);
+
+    return word;
+
+
+}
+// problem 1700 leetcode
+int countStudents(vector<int>& students, vector<int>& sandwiches) {
+    queue<int> stu;
+    queue<int> sand;
+    int failedCycle = 0;
+    for (int i:students) stu.push(i);
+    for (int j:sandwiches) sand.push(j);
+
+
+    while (!stu.empty() && failedCycle < stu.size()) {
+        if (stu.front() == sand.front()) {
+            stu.pop();
+            sand.pop();
+            failedCycle = 0;
+        }else {
+            stu.push(stu.front());
+            stu.pop();
+            failedCycle++;
+        }
+    }
+
+    return  stu.size();
+
+
+}
 
 int main(){
-    LinkedList l1;
-    l1.append(2);
+    string reverse_prefix = reversePrefix("abbcd", 'b');
 
-    l1.removeEven();
-
-    l1.print();
+    cout << reverse_prefix;
     return 0;
 
 }
