@@ -26,4 +26,7 @@ add_executable(untitled main.cpp
         BST/NodeTree.h
         BST/BST.cpp
         BST/BST.h
+        Queue/QueueArray.cpp
+        Queue/QueueArray.h
+        d.cpp
 )

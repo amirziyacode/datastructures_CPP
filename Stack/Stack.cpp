@@ -41,7 +41,7 @@ int Stack::pop() {
     return result;
 }
 
-// for Example  32 + 67 -*  is real world is like 3+2 - 6*7 but computer not understood how can to solve it
+// for Example  32 + 67 -*  is real world is like 3+2 * 7-6 but computer not understood how can to solve it
 bool Stack::isPostFix(const string &exp) {
     stack<string> s;
 
@@ -121,7 +121,8 @@ void Stack::reverse(string & exp) {
 
 bool Stack::isPalindrome(string & exp) {
     stack<char> s;
-        const int n = exp.length();
+    const int n = exp.length();
+
     for (int i =0; i< n/2; i++) {
         s.push(exp[i]);
     }

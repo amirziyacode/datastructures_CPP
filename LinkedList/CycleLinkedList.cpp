@@ -39,20 +39,20 @@ void CycleLinkedList::deleteFromBeginning() {
 
     // with one Node
     if (head->next == head) {
-        delete head;
+        Node* temp = head;
         head = nullptr;
+        delete temp;
         return;
     }
 
-    const Node *ptr = head;
-    Node *cur = head;
-
-    while (cur -> next != head) {
-        cur = cur -> next;
+    Node *curr = head;
+    while (curr -> next != head) {
+        curr = curr -> next;
     }
-    head = ptr -> next;
-    cur -> next = head ;
-    delete ptr;
+    const Node *prev = head;
+    head = head->next;
+    curr->next = head;
+    delete prev;
 }
 
 void CycleLinkedList::deleteByElement(const int element) {

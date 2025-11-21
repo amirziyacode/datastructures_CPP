@@ -22,6 +22,7 @@ public:
     void print() const;
     void printMiddle() const;
     void removeDuplicates() const;
+    void removeEven() ;
     LinkedList subsecribList(LinkedList other);
 };
 

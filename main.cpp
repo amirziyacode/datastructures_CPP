@@ -1,5 +1,6 @@
 
 
+#include <cstring>
 #include <iostream>
 #include <ostream>
 #include <queue>
@@ -8,6 +9,7 @@
 
 #include "BST/BST.h"
 #include "BST/NodeTree.h"
+#include "LinkedList/LinkedList.h"
 #include "Stack/StackQueue.h"
 
 using namespace std;
@@ -124,21 +126,36 @@ void traverseInOrder(NodeTree* root) {
     cout << root->data << " ";
     traverseInOrder(root->right);
 }
-int main() {
-    BST bst;
-    bst.insert(7);
-    bst.insert(9);
-    bst.insert(4);
-    bst.insert(3);
-    bst.insert(5);
-    bst.insert(2);
 
-    if (bst.search(-1)) {
-        cout << "YES";
-    }else {
-        cout << "NO";
+/// midSemester
+int findClosingIndex(char *str, int opening_index)
+{
+    if (str == nullptr)
+        return -1;
+
+    int depth = 0;
+
+    for (int i = opening_index; i < sizeof(str); i++) {
+        if (str[i] == '(') {
+            depth++;
+        }else if (str[i] == ')') {
+            depth--;
+            if (depth == 0) {
+                return i;
+            }
+        }
     }
+    return -1;
+}
 
+
+int main(){
+    LinkedList l1;
+    l1.append(2);
+
+    l1.removeEven();
+
+    l1.print();
     return 0;
 
 }

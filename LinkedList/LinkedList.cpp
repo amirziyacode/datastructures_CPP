@@ -93,7 +93,7 @@ void LinkedList::deleteAt(int pos) {
     Node *prev = nullptr;
     int counter = 0;
 
-    while (counter <= pos) {
+    while (counter < pos) {
         prev = ptr;
         ptr = ptr->next;
         counter++;
@@ -130,7 +130,6 @@ void LinkedList::deleteElementAt(int ele) {
     prev->next = ptr->next;
 
     delete ptr;
-    delete prev;
 
 }
 bool LinkedList::hasCycle() const {
@@ -238,5 +237,30 @@ void LinkedList::printMiddle() const {
         cout << slow->data << " ";
     }else {
         cout << slow->next->data << " ";
+    }
+}
+
+void LinkedList::removeEven() {
+    if (!head) {
+        return;
+    }
+    Node *prev = nullptr;
+    Node *curr = head;
+
+    while (curr != nullptr) {
+        if (head->data % 2 == 0) {
+            head = head->next;
+            delete curr;
+            curr = head;
+        }else if (curr -> data % 2 == 0) {
+            Node *temp = curr;
+            prev->next = curr->next;
+            curr = curr->next;
+            delete temp;
+        }else {
+            prev = curr;
+            curr = curr->next;
+        }
+
     }
 }
