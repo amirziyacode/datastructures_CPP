@@ -3,11 +3,12 @@
 #include <algorithm>
 #include <cstring>
 #include <iostream>
+#include <map>
 #include <ostream>
 #include <queue>
 #include <vector>
 #include <stack>
-
+#include <math.h>
 #include "BST/BST.h"
 #include "BST/NodeTree.h"
 #include "LinkedList/LinkedList.h"
@@ -129,24 +130,38 @@ void traverseInOrder(NodeTree* root) {
 }
 
 /// midSemester
-int findClosingIndex(char *str, int opening_index)
+int findClosingIndex(string str, int opening_index)
 {
-    if (str == nullptr)
-        return -1;
+    int starter = 0;
+    int counter = 0;
+    stack<char> st;
 
-    int depth = 0;
-
-    for (int i = opening_index; i < sizeof(str); i++) {
+    // find open
+    for (int  i = 0;i < str.length(); i++) {
+        if (counter == opening_index) {
+            starter = i;
+            break;
+        }
         if (str[i] == '(') {
-            depth++;
-        }else if (str[i] == ')') {
-            depth--;
-            if (depth == 0) {
+            counter++;
+        }
+    }
+
+    for (int i = starter; i < str.length(); i++) {
+        if (str[i] == '(') {
+            st.push(str[i]);
+        }
+        else if (str[i] == ')') {
+            if (!st.empty()) {
+                st.pop();
+            }else {
                 return i;
             }
         }
     }
+
     return -1;
+
 }
 
 string reversePrefix(string word, char ch) {
@@ -194,10 +209,65 @@ int countStudents(vector<int>& students, vector<int>& sandwiches) {
 
 }
 
-int main(){
-    string reverse_prefix = reversePrefix("abbcd", 'b');
+string infixToPostfix(string s) {
+    stack<char> num;
+    stack<char> op;
+    string result ;
+    for (int i = 0; i < s.length(); i++) {
+        if (isdigit(s[i])) {
+            num.push(s[i]);
+        }else if (s[i] == '+' || s[i] == '-' || s[i] == '*' || s[i] == '/') {
+            op.push(s[i]);
+        }
+    }
+    while (!num.empty() || !op.empty()) {
+        result += op.top();
+        op.pop();
+        if (!num.empty()) {
+            result += num.top();
+            num.pop();
+        }
+        if (!num.empty()) {
+            result += num.top();
+            num.pop();
+        }
+    }
 
-    cout << reverse_prefix;
+
+    reverse(result.begin(), result.end());
+
+    return result;
+}
+
+//190 leetcode
+int reverseBits(int n) {
+    int bits[32] = {};
+    int count = 0;
+    int result = 0;
+    int power = 31;
+
+    while (n != 0) {
+        bits[count] = n % 2;
+        n /= 2;
+        count++;
+    }
+
+    for (int i = 0;i < 32; i++) {
+        result += bits[i] * pow(2,power);
+        power--;
+    }
+
+
+    return result;
+}
+
+
+
+int main(){
+
+
+    cout << reverseBits(43261596);
+
     return 0;
 
 }
