@@ -29,4 +29,8 @@ add_executable(untitled main.cpp
         Queue/QueueArray.cpp
         Queue/QueueArray.h
         d.cpp
+        AVLTREE/AVLNode.cpp
+        AVLTREE/AVLNode.h
+        AVLTREE/AVLTree.cpp
+        AVLTREE/AVLTree.h
 )

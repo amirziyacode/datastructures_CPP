@@ -262,11 +262,55 @@ int reverseBits(int n) {
 }
 
 
+// 109 leetCode Tree
+struct TreeNode {
+    int val;
+    TreeNode *left;
+    TreeNode *right;
+    TreeNode() : val(0), left(nullptr), right(nullptr) {}
+    TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
+    TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
+};
+
+
+TreeNode* build(vector<int>& nums, int left, int right) {
+    if (left  > right)  return nullptr;
+    int mid = (left + right) / 2;
+    TreeNode* root = new TreeNode(nums[mid]);
+
+    root->left = build(nums, left, mid - 1);
+    root->right = build(nums, mid + 1, right);
+
+    return root;
+}
+
+TreeNode* sortedArrayToBST(vector<int>& nums) {
+    return build(nums, 0, nums.size() - 1);
+}
+
+int sumOfLeftLeaves(TreeNode* root) {
+    queue<int> q;
+    TreeNode* next = root;
+    TreeNode* curr =  root;
+
+
+    while (curr != nullptr) {
+        TreeNode* temp = root->left;
+
+        while (next != nullptr) {
+            if (next->left == nullptr && next->right == nullptr) {
+                q.push(next->val);
+            }
+            next = next->left;
+        }
+    }
+
+}
+
 
 int main(){
-
-
-    cout << reverseBits(43261596);
+    vector<int> nums = {-10,-3,0,5,9};
+    sortedArrayToBST(nums);
 
     return 0;
 
