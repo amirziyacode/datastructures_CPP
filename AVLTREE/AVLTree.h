@@ -9,11 +9,14 @@
 
 class AVLTree {
     private:
-    AVLTree* root;
+    AVLNode* root;
     int height(AVLNode* node);
     int balanceFactor(AVLNode* node);
     AVLNode* leftRotate(AVLNode* node);
     AVLNode* rightRotate(AVLNode* node);
+    AVLNode* insert(AVLNode* node,int key);
+    public:
+    void insert(int key);
 };
 
 
