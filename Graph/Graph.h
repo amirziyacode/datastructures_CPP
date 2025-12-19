@@ -15,6 +15,7 @@ class Graph {
     Graph(int size);
     void addEdge(int,int) const;
     int inDegree(int) const;
+    void BSFC(int)const;
 };
 
 

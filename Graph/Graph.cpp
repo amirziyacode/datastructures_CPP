@@ -4,6 +4,10 @@
 
 #include "Graph.h"
 
+#include <iostream>
+#include <queue>
+
+
 Graph::Graph(int size) {
     list = new Node*[size];
     num = size;
@@ -36,3 +40,24 @@ int Graph::inDegree(const int j) const {
     }
     return counter;
 }
+
+void Graph::BSFC(const int i) const {
+    bool visited[num];
+    std::queue<int> q;
+    q.push(i);
+    visited[i] = true;
+    while (!q.empty()) {
+        const int cur = q.front();
+        q.pop();
+        std::cout << cur <<std::endl;
+        const Node *p = list[cur];
+        while (p != nullptr) {
+            if (!visited[p->value]) {
+                visited[p->value] = true;
+                q.push(p->value);
+            }
+            p = p->next;
+        }
+    }
+}
+
