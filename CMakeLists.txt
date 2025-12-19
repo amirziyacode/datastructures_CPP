@@ -33,4 +33,8 @@ add_executable(untitled main.cpp
         AVLTREE/AVLNode.h
         AVLTREE/AVLTree.cpp
         AVLTREE/AVLTree.h
+        Graph/Graph.cpp
+        Graph/Graph.h
+        Graph/Node.cpp
+        Graph/Node.h
 )
