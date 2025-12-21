@@ -40,7 +40,7 @@ int Graph::inDegree(const int j) const {
     }
     return counter;
 }
-
+// TODO:Visited All elements in graph
 void Graph::BSFC(const int i) const {
     bool visited[num];
     std::queue<int> q;

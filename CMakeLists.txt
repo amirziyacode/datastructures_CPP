@@ -37,4 +37,6 @@ add_executable(untitled main.cpp
         Graph/Graph.h
         Graph/Node.cpp
         Graph/Node.h
+        Graph/GraphMatrix.cpp
+        Graph/GraphMatrix.h
 )
