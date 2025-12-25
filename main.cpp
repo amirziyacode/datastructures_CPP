@@ -357,6 +357,27 @@ void mergeSort(vector<int> arr,int left,int right) {
     merg(arr,left,mid,right);
 }
 
+int partition(vector<int> arr,int low,int height) {
+    int privot = arr[height];
+    int i = low -1;
+    for (int j = low; j <= height - 1; j++) {
+        if (arr[j] <= privot) {
+            i++;
+            swap(arr[i], arr[j]);
+        }
+    }
+    swap(arr[i + 1], arr[height]);
+    return i+1;
+}
+
+void quickSort(vector<int> arr,int low,int height) {
+    if (low <=  height ) {
+        int pi = partition(arr,low,height);
+
+        quickSort(arr,low,pi-1);
+        quickSort(arr,pi+1,height);
+    }
+}
 
 int main(){
     vector<int> arr = {38, 27, 43, 10};
