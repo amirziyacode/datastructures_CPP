@@ -8,11 +8,18 @@
 
 
 class BST {
+private:
+    int minValue(NodeTree*);
     public:
     NodeTree *root;
     BST();
     void insert(int);
     bool search(int);
+    void BFS();
+    void InorderTraversal();
+    void inorderTraversal(NodeTree*);
+    int height(NodeTree*);
+    int minValue();
 };
 
 

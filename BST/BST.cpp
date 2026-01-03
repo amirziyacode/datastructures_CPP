@@ -4,6 +4,8 @@
 
 #include "BST.h"
 
+#include <iostream>
+#include <queue>
 #include <stddef.h>
 
 #include "../LinkedList/Node.h"
@@ -63,4 +65,59 @@ bool BST::search(const int data) {
     }
 
     return false;
+}
+//    12
+//  9    14
+// 5  10    20
+//  6
+// 12 , 9,14,5,10,20,6
+
+void BST::BFS() {
+    std::queue<NodeTree*> q;
+    q.push(root);
+    while (!q.empty()) {
+        NodeTree *temp = q.front();
+        q.pop();
+        std::cout << temp->data << " ";
+
+        if (temp->left) {
+            q.push(temp->left);
+        }
+        if (temp->right) {
+            q.push(temp->right);
+        }
+    }
+}
+
+void BST::InorderTraversal() {
+    inorderTraversal(root);
+}
+void BST::inorderTraversal(NodeTree *root) {
+    if (root == nullptr) {
+        return;
+    }
+    inorderTraversal(root->left);
+    std::cout << root->data;
+    inorderTraversal(root->right);
+}
+int height(NodeTree *root) {
+    if (root == nullptr) {
+        return 0;
+    }
+    return 1 + std::max(height(root->left), height(root->right));
+}
+int BST::minValue() {
+    return BST::minValue(root);
+}
+
+
+int BST::minValue(NodeTree* root) {
+    if (root->left == nullptr && root->right == nullptr) {
+        return root->data;
+    }
+
+    const int left = minValue(root->left);
+    const int right = minValue(root->right);
+
+    return std::min(std::min(left,right) , root->data);
 }

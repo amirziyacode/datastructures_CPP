@@ -120,14 +120,6 @@ void reversQueueRecursive(queue<int>& _queue) {
     _queue.push(top);
 }
 
-void traverseInOrder(NodeTree* root) {
-    if (root == nullptr) {
-        return;
-    }
-    traverseInOrder(root->left);
-    cout << root->data << " ";
-    traverseInOrder(root->right);
-}
 
 /// midSemester
 int findClosingIndex(string str, int opening_index)
@@ -272,6 +264,15 @@ struct TreeNode {
     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
 };
 
+// Binary Tree
+void traverseInOrder(NodeTree* root) {
+    if (root == nullptr) {
+        return;
+    }
+    traverseInOrder(root->left);
+    cout << root->data << " ";
+    traverseInOrder(root->right);
+}
 
 TreeNode* build(vector<int>& nums, int left, int right) {
     if (left  > right)  return nullptr;
@@ -380,10 +381,10 @@ void quickSort(vector<int> arr,int low,int height) {
 }
 
 int main(){
-    vector<int> arr = {38, 27, 43, 10};
+    vector<int> arr = {10,5,11};
     int n = arr.size();
 
-    mergeSort(arr, 0, n - 1);
+    quickSort(arr, 0, n - 1);
     for (int i = 0; i < arr.size(); i++)
         cout << arr[i] << " ";
     cout << endl;
