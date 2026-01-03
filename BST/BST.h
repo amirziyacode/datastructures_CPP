@@ -10,6 +10,8 @@
 class BST {
 private:
     int minValue(NodeTree*);
+    bool equality(NodeTree*,NodeTree*);
+    bool isBST();
     public:
     NodeTree *root;
     BST();
@@ -20,6 +22,8 @@ private:
     void inorderTraversal(NodeTree*);
     int height(NodeTree*);
     int minValue();
+    bool equality(BST);
+    bool isBST(NodeTree*,int,int);
 };
 
 

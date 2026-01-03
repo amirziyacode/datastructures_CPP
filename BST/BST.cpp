@@ -4,6 +4,7 @@
 
 #include "BST.h"
 
+#include <climits>
 #include <iostream>
 #include <queue>
 #include <stddef.h>
@@ -120,4 +121,36 @@ int BST::minValue(NodeTree* root) {
     const int right = minValue(root->right);
 
     return std::min(std::min(left,right) , root->data);
+}
+
+bool BST::equality(BST other) {
+    return equality(root, other.root);
+}
+
+bool BST::equality(NodeTree *first,NodeTree *second) {
+    if (first == nullptr && second == nullptr) {
+        return true;
+    }
+
+    if (first != nullptr && second != nullptr) {
+        return first->data == second->data && equality(first->left, second->left) && equality(first->right, second->right);
+    }
+
+    return false;
+
+}
+bool BST::isBST() {
+    return isBST(root,INT_MIN,INT_MAX);
+}
+
+
+bool BST::isBST(NodeTree *root, int min, int max) {
+    if (root == nullptr) {
+        return true;
+    }
+
+    if (root->data < min || root->data > max) {
+        return false;
+    }
+    return isBST(root->left , min, root->data - 1) && isBST(root->right, root->data + 1, max);;
 }
