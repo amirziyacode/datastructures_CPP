@@ -11,6 +11,7 @@ class BST {
 private:
     int minValue(NodeTree*);
     bool equality(NodeTree*,NodeTree*);
+    void printAtDistance(NodeTree*,int);
     bool isBST();
     public:
     NodeTree *root;
@@ -24,6 +25,7 @@ private:
     int minValue();
     bool equality(BST);
     bool isBST(NodeTree*,int,int);
+    void printNodeAtDistance(int);
 };
 
 

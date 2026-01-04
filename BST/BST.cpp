@@ -154,3 +154,21 @@ bool BST::isBST(NodeTree *root, int min, int max) {
     }
     return isBST(root->left , min, root->data - 1) && isBST(root->right, root->data + 1, max);;
 }
+
+void BST::printNodeAtDistance(int k) {
+    printAtDistance(root,k);
+}
+
+void BST::printAtDistance(NodeTree * root, int k) {
+    if (root == nullptr) {
+        return;
+    }
+    if (k == 0) {
+        std::cout << root->data;
+        return;
+    }
+    printAtDistance(root->left,k-1);
+    printAtDistance(root->right,k-1);
+}
+
+
