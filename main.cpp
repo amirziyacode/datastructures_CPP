@@ -274,6 +274,22 @@ void traverseInOrder(NodeTree* root) {
     traverseInOrder(root->right);
 }
 
+void inOrder(NodeTree* root) {
+    stack<NodeTree*> st;
+    st.push(root);
+    NodeTree* curr = root->left;
+    while (!st.empty()) {
+        while (curr) {
+            st.push(curr);
+            curr = curr->left;
+        }
+        NodeTree* temp = st.top();
+        st.pop();
+        cout << temp->data;
+        curr = temp->right;
+    }
+}
+
 TreeNode* build(vector<int>& nums, int left, int right) {
     if (left  > right)  return nullptr;
     int mid = (left + right) / 2;
