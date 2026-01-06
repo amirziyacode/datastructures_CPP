@@ -172,3 +172,22 @@ void BST::printAtDistance(NodeTree * root, int k) {
 }
 
 
+void BST::mirror() {
+    mirror(root);
+}
+
+void BST::mirror(NodeTree *root) {
+   if (root == nullptr) {
+       return;
+   }
+
+    NodeTree *temp = root->left;
+    root->left = root->right;
+    root->right = temp;
+
+    mirror(root->left);
+    mirror(root->right);
+}
+
+
+
